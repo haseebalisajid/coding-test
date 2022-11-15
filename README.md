@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# Coding Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This test is designed as to measure the following traits of the applicant:
+- Drive
+- Speed
+- Knowledge
+- Communication
 
-## Available Scripts
+**Technologies:**
+- TypeScript
+- React
+- Redux
+- Tailwind
 
-In the project directory, you can run:
+**Rules:**
+- Maximum duration of 3 hours
+- Record your screen while writing code *(obsproject.com or any other tool)*
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Run `yarn` to install the dependencies in `package.json`
+2. Run `yarn start` to host the website on http://localhost:3000.
+3. Run `yarn server` to host the API on http://localhost:8080.
+4. Use [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) on all files you edited before sending in your code test
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tasks
 
-### `npm test`
+1. **Authenticate**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   Use the Fetch API to make a `POST` request to `http://localhost:8080/authenticate` to receive a cookie
 
-### `npm run build`
+   - Add a page where a user can fill in an email and password
+   - Add a new HTTP requests to the `useAPI` hook
+   - The `POST` body should be JSON containing `email` and `password`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Load data**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   Use the Fetch API to make a `GET` request to `http://localhost:8080/transactions?page=0` to receive data
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - Add a new HTTP requests to the `useAPI` hook
+   - Add a `Route` and create a `NavLink` to it
+   - When the user arrives on this page:
+     - Reset page to 0
+     - Remove previously loaded data
+     - Send the request
+   - Add a "More" button that loads in another page and **adds** the transactions to the table
+   - Use spread operator inside of the `addTransactions` Redux reducer
 
-### `npm run eject`
+3. **Display data**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   - Put all transactions available in the Redux store in a table
+   - Use `Object.values(...).map(...)` inside of your JSX
+   - Apply acceptable styling using Tailwind
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Submit**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+   Submit the link to your public repository fork to luuk@thedigitalrenaissance.io. Next step is to have an interview in which we will look at your recording together and discuss your software.
