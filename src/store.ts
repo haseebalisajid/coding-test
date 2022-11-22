@@ -1,10 +1,10 @@
 import {
   TypedUseSelectorHook,
   useSelector as useReduxSelector,
-} from 'react-redux';
-import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
+} from "react-redux";
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { State } from './types';
+import { State } from "./types";
 
 const initialState: State = {
   transactions: {},
@@ -12,7 +12,7 @@ const initialState: State = {
 };
 
 export const { actions, reducer } = createSlice({
-  name: 'store',
+  name: "store",
   initialState,
   reducers: {
     set: (state, action: PayloadAction<Partial<State>>) => ({
@@ -20,7 +20,15 @@ export const { actions, reducer } = createSlice({
       ...action.payload,
     }),
     // TODO: Write this reducer
-    // addTransactions:
+    addTransactions: (state, action: PayloadAction<Partial<State>>) => ({
+      ...state,
+      transactions: { ...state.transactions, ...action.payload.transactions },
+    }),
+
+    clearStore: (state) => ({
+      ...state,
+      transactions: {},
+    }),
   },
 });
 
@@ -31,6 +39,6 @@ const store = configureStore({
 
 export default store;
 
-export { useDispatch } from 'react-redux';
+export { useDispatch } from "react-redux";
 
 export const useSelector: TypedUseSelectorHook<State> = useReduxSelector;
